@@ -10,10 +10,12 @@ object Limpieza2 extends App {
   val inputFilePath = "data/limpios2.csv"
   val outputFilePath = "data/limpios3.csv"
 
-  // Expresión regular para detectar JSON válido
+
+ //  Expresión regular diseñada para coincidir con cadenas que representen un objeto JSON o un arreglo JSON
+
   val jsonPattern: Regex = """^(\{.\}|\[.\])$""".r
 
-  // Función para parsear fechas
+  // Función ara parsear fechas
   def parseDate(dateStr: String): String = {
     if (Option(dateStr).forall(_.trim.isEmpty) || dateStr == "No Data") "No Data"
     else {
@@ -28,7 +30,7 @@ object Limpieza2 extends App {
   val csvReader = java.nio.file.Files.newBufferedReader(java.nio.file.Paths.get(inputFilePath))
   val headers: List[String] = csvReader.readLine().split(";").map(_.trim).toList
   csvReader.close()
-
+/*
   // Leer filas y mapearlas a Map[String, String]
   val rows: List[Map[String, String]] = scala.io.Source.fromFile(inputFilePath)
     .getLines()
@@ -69,6 +71,6 @@ object Limpieza2 extends App {
   } finally {
     writer.close()
   }
-
+*/
   println(s"Archivo limpio guardado en: $outputFilePath")
 }

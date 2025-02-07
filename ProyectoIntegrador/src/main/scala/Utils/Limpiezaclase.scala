@@ -2,9 +2,8 @@ package Utils
 import java.io.File
 import kantan.csv._
 import kantan.csv.ops._
-import kantan.csv.generic._
 import play.api.libs.json._
-import modelos.{Movie, Pelicula}
+import modelos.Movie
 
 object Limpiezaclase extends App {
 

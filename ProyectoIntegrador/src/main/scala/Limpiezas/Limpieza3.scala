@@ -30,7 +30,6 @@ object Limpieza3 extends App {
     var jsonLimpio = jsonOriginal.trim
 
     // Correcciones básicas en el formato
-    // Correcciones básicas en el formato
     jsonLimpio = jsonLimpio
       .replaceAll("""\[""", "[") // Reemplaza comillas escapadas antes de corchetes de apertura
       .replaceAll("""\]""", "]") // Reemplaza comillas escapadas antes de corchetes de cierre
@@ -40,6 +39,11 @@ object Limpieza3 extends App {
       .replaceAll("True", "true") // Convierte valores booleanos de Python a formato JSON
       .replaceAll("False", "false") // Convierte valores booleanos de Python a formato JSON
       .replaceAll("""\\""", "") // Elimina barras invertidas innecesarias
+      .replaceAll(",\\s*\\]", "]")  // Eliminar coma antes de cierre de array
+      .replaceAll(",\\s*\\}", "}")  // Eliminar coma antes de cierre de objeto
+      .replaceAll("\"\"", "\"")  // Eliminar dobles comillas
+      .replaceAll("(?<=[a-zA-Z0-9])\"(?=[a-zA-Z0-9])", "'")  // Corregir comillas en medio de palabras
+
 
 
     // Correcciones de balance de llaves y corchetes
@@ -62,13 +66,11 @@ object Limpieza3 extends App {
     var result = json
     val faltanLlaves = result.count(_ == '{') - result.count(_ == '}')
     val faltanCorchetes = result.count(_ == '[') - result.count(_ == ']')
-
     if (faltanLlaves > 0) {
       result = result + ("}" * faltanLlaves)
     } else if (faltanLlaves < 0) {
       result = ("{" * -faltanLlaves) + result
     }
-
     if (faltanCorchetes > 0) {
       result = result + ("]" * faltanCorchetes)
     } else if (faltanCorchetes < 0) {

@@ -8,5 +8,4 @@ case class SpokenLanguage(
 object SpokenLanguage {
   implicit val spokenLanguageFormat: Format[SpokenLanguage] = Json.format[SpokenLanguage]
 }
-
  */

@@ -11,8 +11,8 @@ lazy val root = (project in file("."))
       "com.typesafe.play" %% "play-json" % "2.9.2",
       "org.tpolecat" %% "doobie-core" % "1.0.0-RC5",
       "org.tpolecat" %% "doobie-hikari" % "1.0.0-RC5",
-      "com.mysql" % "mysql-connector-j" % "8.0.31",
       "com.typesafe" % "config" % "1.4.2",
-      "ch.qos.logback" % "logback-classic" % "1.2.3"
-    )
+      "org.knowm.xchart" % "xchart" % "3.8.0",
+      "com.mysql" % "mysql-connector-j" % "8.0.31",
+      "ch.qos.logback" % "logback-classic"%"1.2.3")
   )

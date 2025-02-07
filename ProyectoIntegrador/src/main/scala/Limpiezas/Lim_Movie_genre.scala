@@ -6,9 +6,8 @@ import play.api.libs.json.Json
 import Utils.Limpiezaclase
 import modelos.movie_genre
 object Lim_Movie_genre extends App{
-  val movies = Limpiezaclase.movies()
   implicit val format = Json.format[movie_genre]
-
+  val movies = Limpiezaclase.movies()
   val movieGenre = movies.flatMap { movie =>
     try {
       val jsonlim = Limpiezaclase.jsonLimpio(movie.genres).getOrElse("")

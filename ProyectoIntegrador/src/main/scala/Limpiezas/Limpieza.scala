@@ -17,16 +17,14 @@ object Limpieza extends App {
 
   val inputFile = new File(inputFilePath)
 
-  // Procesar los datos
-  val processedData = inputFile
-    .asCsvReader[List[String]](rfc.withHeader)
-    .collect { case Right(row) => row }
+  val Data = inputFile
+    .asCsvReader[List[String]](rfc.withHeader).collect { case Right(fila) => fila }
     .filter(_.forall(_.nonEmpty))
-.toList
+    .toList
     .distinct
 
   // Preparar los datos con los headers
-  val allData = headers :: processedData
+  val allData = headers :: Data
 
   // Escribir al archivo de salida
   val outputFile = new File(outputFilePath)
